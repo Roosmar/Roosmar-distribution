@@ -1,13 +1,20 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+// ... autres imports
+
+type DeliveryMode = 'colissimo' | 'gls';
 import { ShoppingCart, Trash2, CreditCard, Users, X, Truck } from 'lucide-react'
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
+import { ShoppingCart, Trash2, Package, CreditCard, Users, X, Truck } from 'lucide-react'
+ fd40efa57fae168eda7afa1ae0bc673bca9ee8ec
 import { useApp } from '../contexts/AppContext'
 import { formatPrice, formatWeight } from '../utils/calculations'
 import CartItem from '../components/CartItem'
 
 const Commandes: React.FC = () => {
   const { cart, clearCart, createOrder, getCurrentOrderTotals, clients, selectedClient, setSelectedClient, selectedDeliveryMode, setSelectedDeliveryMode, vatEnabled, vatRate, setVatEnabled, setVatRate } = useApp()
-  const [notes, setNotes] = useState('')
+  const deliveryMode = selectedDeliveryMode as DeliveryMode;
   const [isCreating, setIsCreating] = useState(false)
 
   const totals = getCurrentOrderTotals()
